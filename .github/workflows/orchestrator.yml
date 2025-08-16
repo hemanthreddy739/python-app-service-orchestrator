@@ -7,8 +7,8 @@ jobs:
   trigger-workflows:
     runs-on: ubuntu-latest
     steps:
-      - name: Trigger Python Repo 1
+      - name: Trigger python-app-speech-service
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.REPO_DISPATCH_PAT }}
         run: |
             gh api --method POST -H "Accept: application/vnd.github.v3+json" /repos/sec-gh-account-hemanthreddy739/python-app-speech-service/dispatches -f event_type='run_build' -f client_payload='{"ref": "${{ github.ref }}"}'
